@@ -10,6 +10,7 @@ $packageGroups = @{
     "default" = @("7zip.install", "firefox", "notepadplusplus.install", "powershell")
     "family" = @("7zip.install", "adobereader", "firefox", "powershell", "teamviewer", "vlc")
     "dev" = @("7zip.install", "firefox", "git.install", "notepadplusplus.install", "powershell", "putty", "python", "vscode")
+    "dev2" = @("7zip.install", "adobereader", "firefox", "git.install", "go", "googlechrome", "microsoft-windows-terminal", "notepadplusplus.install", "powershell", "putty", "python", "vscode")
     "all" = @(
         "1password",
         "7zip.install",
@@ -195,7 +196,8 @@ function Install-ChocolateyPackages {
         return
     }
 
-    # Determine the list of packages to install based on the user group
+    $selectedPackages = @()
+
     $packagesToInstall = $null
     if ($UserGroup -and $packageGroups.ContainsKey($UserGroup)) {
         $packagesToInstall = $packageGroups[$UserGroup]
@@ -203,43 +205,30 @@ function Install-ChocolateyPackages {
         $packagesToInstall = $packageGroups["all"]
     }
 
-    # Interactive or automated installation based on the user group or absence thereof
+    Write-Host "Packages to install: $($packagesToInstall -join ', ')"
+
     foreach ($package in $packagesToInstall) {
         $installPackage = $false
         if (-not $UserGroup -or $UserGroup -eq "all") {
-            $userResponse = Read-Host "Install $package? (Y/N)"
+            $userResponse = Read-Host ("Install " + $package + "? (Y/N)")
             $installPackage = $userResponse -eq 'Y'
         } else {
             $installPackage = $true
         }
 
-        if ($installPackage -and !(choco list --local-only | Select-String "^$package$")) {
-            Write-Host "Installing $package..."
-            choco install $package -y
-        } elseif ($installPackage) {
-            Write-Host "$package is already installed."
-        }
-    }
-}
-
-$selectedPackages = @()
-
-foreach ($package in $packages) {
-    Write-Host "Current package: $package"
-    $userResponse = Read-Host ("Install " + $package + "? (Y/N)")
-    if ($userResponse -eq 'Y') {
-        if (!(choco list --local-only | Select-String "$package")) {
+        if ($installPackage) {
             $selectedPackages += $package
-        } else {
-            Write-Host "$package is already installed."
         }
     }
-}
 
-if ($selectedPackages.Count -gt 0) {
-    choco install $selectedPackages -y
-} else {
-    Write-Host "No packages selected for installation."
+    if ($selectedPackages.Count -gt 0) {
+        Write-Host "Installing selected packages: $($selectedPackages -join ', ')"
+        foreach ($pkg in $selectedPackages) {
+            choco install $pkg -y
+        }
+    } else {
+        Write-Host "No packages selected for installation."
+    }
 }
 
 if ($Help) {
