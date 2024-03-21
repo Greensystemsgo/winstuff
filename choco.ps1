@@ -35,6 +35,7 @@ $packageGroups = @{
         "makemkv",
         "mkvtoolnix",
         "microsoft-teams",
+        "microsoft-teams-new-bootstrapper",
         "microsoft-windows-terminal",
         "naps2",
         "nmap",
