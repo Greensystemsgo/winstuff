@@ -7,7 +7,8 @@ param (
 )
 
 $packageGroups = @{
-    "default" = @("7zip.install", "firefox", "notepadplusplus.install", "powershell")
+    "default" = @("microsoft-windows-terminal", "powershell")
+    "dzwigacze" = @("7zip.install", "adobereader", "googlechrome", "microsoft-windows-terminal", "notepadplusplus.install", "powershell", "vlc.install")
     "family" = @("7zip.install", "adobereader", "firefox", "powershell", "teamviewer", "vlc")
     "dev" = @("7zip.install", "firefox", "git.install", "notepadplusplus.install", "powershell", "putty", "python", "vscode")
     "dev2" = @("7zip.install", "adobereader", "firefox", "git.install", "go", "googlechrome", "microsoft-windows-terminal", "notepadplusplus.install", "powershell", "putty", "python", "vscode")
