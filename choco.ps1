@@ -11,7 +11,7 @@ $packageGroups = @{
     "dzwigacze" = @("7zip.install", "adobereader", "googlechrome", "microsoft-windows-terminal", "notepadplusplus.install", "powershell", "vlc.install")
     "family" = @("7zip.install", "adobereader", "firefox", "powershell", "teamviewer", "vlc")
     "dev" = @("7zip.install", "firefox", "git.install", "notepadplusplus.install", "powershell", "putty", "python", "vscode")
-    "dev2" = @("7zip.install", "adobereader", "firefox", "git.install", "go", "googlechrome", "microsoft-windows-terminal", "notepadplusplus.install", "powershell", "putty", "python", "vscode")
+    "dev2" = @("7zip.install", "adobereader", "git.install", "go", "microsoft-windows-terminal", "nmap", "notepadplusplus.install", "openssh", "powershell", "putty", "python", "vlc.install", "vnc-viewr", "vscode", "wireshark", "zoom")
     "all" = @(
         "1password",
         "7zip.install",
