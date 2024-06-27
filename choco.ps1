@@ -58,6 +58,7 @@ $packageGroups = @{
         "qflipper",
         "realvnc",
         "slack",
+        "stardock-fences",
         "steam",
         "superslicer",
         "tailscale",
@@ -72,6 +73,7 @@ $packageGroups = @{
         "vscode",
         "wesnoth",
         "wireshark",
+        "wiztree",
         "zoom"
     )
 }
