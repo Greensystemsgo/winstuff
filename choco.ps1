@@ -20,6 +20,7 @@ $packageGroups = @{
         "autodesk-fusion360",
         "ccleaner",
         "chirp",
+        "chromium",
         "cura-new",
         "cutepdf",
         "discord",
